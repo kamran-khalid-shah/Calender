@@ -1,4 +1,3 @@
-
 require_relative 'month'
 
 class Calender < Month 
@@ -29,7 +28,7 @@ class Calender < Month
   end
 
   def print_month(month)
-    if month < 0 or month > 12
+    if month < 1 or month > 12
       puts "Error: Invalid month entered!"
       return false
     end
@@ -38,7 +37,7 @@ class Calender < Month
   end
 
   def print_day(month, day)
-    if month < 0 or month > 12 or @months[month].days < day or day < 0
+    if month < 1 or month > 12 or @months[month].days < day or day < 1
       puts "Error: Invalid value entered!"
       return false
     end
@@ -51,15 +50,30 @@ class Calender < Month
   end
 
   def add_event(date, event_name, event_desc)
-    return @months[date.month].add(date.day, event_name, event_desc)
+    if event_name.class == String and event_desc.class == String
+      return @months[date.month].add(date.day, event_name, event_desc)
+    else
+      puts "Error: Invalid arguements in add_event"
+      return false
+    end
   end
 
   def remove_event(date, event_name)
-    return @months[date.month].remove(date.day, event_name)
+    if event_name.class == String
+      return @months[date.month].remove(date.day, event_name)
+    else
+      puts "Error: Invalid arguements in remove_event"
+      return false
+    end
   end
 
   def edit_event(date, event_name, event_desc)
-    @months[date.month].edit(date.day, event_name, event_desc)
+    if event_name.class == String and event_desc.class == String
+      return @months[date.month].edit(date.day, event_name, event_desc)
+    else
+      puts "Error: Invalid arguements in edit_event"
+      return false
+    end
   end
 
 end
