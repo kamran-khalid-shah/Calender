@@ -89,5 +89,4 @@ class Month
     end
     return false
   end
-
 end
