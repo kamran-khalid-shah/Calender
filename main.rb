@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'calender'
 require_relative 'month'
 
@@ -14,68 +16,67 @@ loop do
   7. Exit.
 
   Option: "
-
   choice = gets
   choice = choice.to_i
   case choice
   when 1
     print "\nEnter month: "
     month = gets
-    print "Enter day: "
+    print 'Enter day: '
     day = gets
-    print "Enter Event name: "
+    print 'Enter Event name: '
     event_name = gets
-    print "Enter Event description: "
+    print 'Enter Event description: '
     event_desc = gets
     calender.add_event(Time.new(2020, month.to_i, day.to_i), event_name, event_desc)
   when 2
     print "\nEnter month: "
     month = gets
-    print "Enter day: "
+    print 'Enter day: '
     day = gets
-    print "Enter Event name: "
+    print 'Enter Event name: '
     event_name = gets
     calender.remove_event(Time.new(2020, month.to_i, day.to_i), event_name)
   when 3
     print "\nEnter month: "
     month = gets
-    print "Enter day: "
+    print 'Enter day: '
     day = gets
-    print "Enter Event name: "
+    print 'Enter Event name: '
     event_name = gets
-    print "Enter Event description: "
+    print 'Enter Event description: '
     event_desc = gets
     calender.edit_event(Time.new(2020, month.to_i, day.to_i), event_name, event_desc)
   when 4
-    print "Enter the month to print: "
+    print 'Enter the month to print: '
     month = gets
-    if month.to_i == 0
+    if month.to_i.zero?
       calender.print_month(month)
     else
       calender.print_month(month.to_i)
     end
   when 5
-    print "Enter the month: "
+    print 'Enter the month: '
     month = gets
-    print "Enter the day: "
+    print 'Enter the day: '
     day = gets
-    if month.to_i == 0 or day.to_i == 0
-      puts "Error: Invalid input!"
+    if month.to_i.zero? || day.to_i.zero?
+      puts 'Error: Invalid input!'
     else
       calender.print_day(month.to_i, day.to_i)
     end
   when 6
-    print "Enter the month: "
+    print 'Enter the month: '
     month = gets
-    if month.to_i == 0
-      puts "Error: Invalid input!"
+    if month.to_i.zero?
+      puts 'Error: Invalid input!'
     else
       calender.print_events_month(month.to_i)
     end
   when 7
-    puts "Exiting"
+    puts 'Exiting'
     break
   else
-    "Error: Invalid choice"
+    'Error: Invalid choice'
   end
 end
