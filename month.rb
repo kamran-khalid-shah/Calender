@@ -62,7 +62,7 @@ class Month
   end
 
   def show_day(day)
-    puts "\n\t#{day + 1} of #{@name}\n\n"
+    puts "\n\t#{day + 1} of #{@name}\n\n" if @events[day]
     i = 1
     @events[day]&.each do |key, value|
       print "#{i}.\tEvent Name: #{key}"
